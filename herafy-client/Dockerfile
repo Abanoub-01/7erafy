@@ -13,13 +13,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Make the .env file accessible within the Docker container
-COPY .env .env
-
 # Expose the port the app runs on
-EXPOSE 7000
-EXPOSE 27017
+EXPOSE 3000
 
 # Command to run the application
-#CMD ["node", "server.js"]
 CMD ["npm", "run", "dev"]
