@@ -8,5 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Build the Docker frontend
+      uses: /herafy-client
       run: 
         docker built -t frontend .
