@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app-front
+  template:
+    metadata:
+      labels:
+        app: my-app-front
+    spec:
+      containers:
+      - name: my-app-front
+        image: mariomafdy/frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGODB_URI
+          value: mongodb://admin:password@mongodb:27017
