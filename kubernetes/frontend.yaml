@@ -1,3 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-front
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: my-app-front
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,10 +24,10 @@ spec:
         app: my-app-front
     spec:
       containers:
-      - name: my-app-front
+      - name: frontend
         image: mariomafdy/frontend:latest
         ports:
         - containerPort: 3000
         env:
         - name: MONGODB_URI
-          value: mongodb://admin:password@mongodb:27017
+          value: "mongodb://admin:password@mongodb:27017"
