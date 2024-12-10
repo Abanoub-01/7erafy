@@ -1,18 +1,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-app-front-ingress
+  name: my-app-ingress
+  namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: "/"  # Optional: rewrite the target URL with NGINX ingress controller
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
-  - host: my-app.local  # Replace with your desired domain or use a wildcard
+  - host: myapp.local
     http:
       paths:
-      - path: /  # Route all traffic to the frontend service
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: my-app-front  # The service name to route traffic to
+            name: my-app-front
             port:
-              number: 3000  # The service's exposed port
+              number: 3000
+      - path: /mongo-express
+        pathType: Prefix
+        backend:
+          service:
+            name: mongo-express
+            port:
+              number: 8081

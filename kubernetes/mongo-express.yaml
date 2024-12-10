@@ -5,9 +5,11 @@ metadata:
 spec:
   ports:
     - port: 8081
+      nodePort: 30081
       targetPort: 8081
   selector:
     app: mongo-express
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
