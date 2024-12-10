@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-front-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: "/"  # Optional: rewrite the target URL with NGINX ingress controller
+spec:
+  rules:
+  - host: my-app.local  # Replace with your desired domain or use a wildcard
+    http:
+      paths:
+      - path: /  # Route all traffic to the frontend service
+        pathType: Prefix
+        backend:
+          service:
+            name: my-app-front  # The service name to route traffic to
+            port:
+              number: 3000  # The service's exposed port
