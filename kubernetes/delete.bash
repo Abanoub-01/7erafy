@@ -4,5 +4,7 @@ kubectl delete -f mongo.yaml
 kubectl delete -f backend.yaml
 kubectl delete -f frontend.yaml
 kubectl delete -f mongo-express.yaml
+kubectl delete -f ingress.yaml
 
-minikube stop
+
+# minikube stop
