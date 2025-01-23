@@ -8,6 +8,21 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  storageClassName: manual  # Ensures it binds with PV having storageClass 'manual'
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-storage
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain  # or 'Delete' if you want auto-deletion
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data
 ---
 apiVersion: v1
 kind: Service
