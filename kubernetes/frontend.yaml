@@ -31,5 +31,5 @@ spec:
         ports:
         - containerPort: 3000
         env:
-        - name: MONGODB_URI
-          value: "mongodb://admin:password@mongodb:27017"
+        - name: REACT_APP_BACKEND_URL
+          value: "http://57d6e0a8122c.mylabserver.com:30083"

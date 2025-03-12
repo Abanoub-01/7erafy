@@ -5,9 +5,11 @@ metadata:
 spec:
   ports:
     - port: 7000
+      nodePort: 30083
       targetPort: 7000
   selector:
     app: my-app-back
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -30,4 +32,6 @@ spec:
         - containerPort: 7000
         env:
         - name: MONGODB_URI
-          value: "mongodb://admin:password@mongodb:27017"
+          value: "mongodb://admin:password@mongodb:27017/todo?authSource=admin"
+        - name: PORT
+          value: "7000"
